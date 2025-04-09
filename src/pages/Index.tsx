@@ -7,6 +7,7 @@ import DishCard from "@/components/dishes/DishCard";
 import { useToast } from "@/hooks/use-toast";
 import OrderStatusTracker from "@/components/orders/OrderStatusTracker";
 import OrderCard from "@/components/orders/OrderCard";
+import { MapPin } from "lucide-react";
 
 // Sample data
 const featuredDishes = [
@@ -75,17 +76,23 @@ const Index: React.FC = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="text-white max-w-lg">
             <h1 className="text-4xl font-serif font-bold mb-4">
-              Luxury Dining at Your Fingertips
+              Hotel Bheema Luxury Dining
             </h1>
             <p className="text-lg mb-6">
               Order from our award-winning menu and enjoy delicious meals delivered straight to your room.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3">
               <Button size="lg" asChild>
                 <Link to="/menu">Browse Menu</Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
                 <Link to="/orders">Track Order</Link>
+              </Button>
+              <Button size="lg" variant="secondary" className="flex items-center" asChild>
+                <Link to="/location">
+                  <MapPin className="mr-1 h-4 w-4" />
+                  Our Location
+                </Link>
               </Button>
             </div>
           </div>
@@ -116,6 +123,32 @@ const Index: React.FC = () => {
               onAddToCart={handleAddToCart}
             />
           ))}
+        </div>
+      </section>
+
+      {/* Location Preview */}
+      <section className="py-12 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+            <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-4 md:mb-0">
+              Find Us in Ramanathapuram
+            </h2>
+            <Button variant="outline" asChild>
+              <Link to="/location" className="flex items-center">
+                <MapPin className="mr-2 h-4 w-4" />
+                View on Map
+              </Link>
+            </Button>
+          </div>
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+              <MapPin className="h-6 w-6 text-hotel-600" />
+              <p className="text-gray-700">Aranmani street, Laxmi Puram, Ramanathapuram, Tamil Nadu 623501</p>
+              <Button variant="link" onClick={() => window.open("https://www.google.com/maps/dir//Aranmani+street,+Laxmi+Puram,+Ramanathapuram,+Tamil+Nadu+623501/@9.3707008,78.7453869,12z/", "_blank")} className="text-hotel-600 p-0">
+                Get Directions
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 

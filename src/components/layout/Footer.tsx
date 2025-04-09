@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -11,10 +12,10 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h2 className="text-lg font-serif font-semibold text-gray-900 mb-4">
-              Foodie Flow
+              Hotel Bheema
             </h2>
             <p className="text-gray-600 text-sm">
-              Luxury hotel food service made simple and elegant. Order from the comfort of your room and track your delivery in real-time.
+              Experience luxury dining at Hotel Bheema. Order from the comfort of your room and track your delivery in real-time.
             </p>
           </div>
           <div>
@@ -35,6 +36,11 @@ const Footer: React.FC = () => {
               <li>
                 <Link to="/orders" className="text-gray-600 hover:text-hotel-600 text-sm">
                   My Orders
+                </Link>
+              </li>
+              <li>
+                <Link to="/location" className="text-gray-600 hover:text-hotel-600 text-sm">
+                  Location
                 </Link>
               </li>
               <li>
@@ -65,14 +71,23 @@ const Footer: React.FC = () => {
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
               Contact
             </h3>
-            <p className="text-gray-600 text-sm mb-2">Room Service: 123</p>
-            <p className="text-gray-600 text-sm mb-2">Reception: 456</p>
-            <p className="text-gray-600 text-sm">Email: dining@foodieflow.com</p>
+            <div className="text-gray-600 text-sm mb-2 flex items-center">
+              <MapPin className="h-4 w-4 mr-2" />
+              <p>Aranmani street, Laxmi Puram, Ramanathapuram, Tamil Nadu 623501</p>
+            </div>
+            <div className="text-gray-600 text-sm mb-2 flex items-center">
+              <Phone className="h-4 w-4 mr-2" />
+              <p>Room Service: +91 98765 43210</p>
+            </div>
+            <div className="text-gray-600 text-sm flex items-center">
+              <Mail className="h-4 w-4 mr-2" />
+              <p>info@hotelbheema.com</p>
+            </div>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-gray-600 text-sm text-center">
-            &copy; {currentYear} Foodie Flow Hotel. All rights reserved.
+            &copy; {currentYear} Hotel Bheema. All rights reserved.
           </p>
         </div>
       </div>

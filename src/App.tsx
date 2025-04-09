@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
+import Location from "./pages/Location";
 import NotFound from "./pages/NotFound";
 
 // Admin pages
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/menu" element={<Menu />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/location" element={<Location />} />
           
           {/* Admin Routes */}
           <Route path="/admin" element={<Dashboard />} />
