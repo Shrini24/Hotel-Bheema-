@@ -1,285 +1,248 @@
 
 import React, { useState } from "react";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import OrderStatusBadge from "@/components/orders/OrderStatusBadge";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Clock, CheckCircle2, ChefHat } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Check, Clock, User } from "lucide-react";
 
-// Sample data
-const initialOrders = [
-  {
-    id: "order-123",
-    orderNumber: "12345",
-    time: "10:30 AM",
-    status: "pending" as const,
-    items: [
-      { id: "item-1", name: "Grilled Salmon", quantity: 1, notes: "Medium well" },
-      { id: "item-2", name: "Truffle Risotto", quantity: 1, notes: "" },
-      { id: "item-3", name: "New York Cheesecake", quantity: 1, notes: "" }
-    ],
-    customer: "John Smith",
-    roomNumber: "304"
-  },
-  {
-    id: "order-456",
-    orderNumber: "12346",
-    time: "11:15 AM",
-    status: "preparing" as const,
-    items: [
-      { id: "item-4", name: "Caprese Salad", quantity: 1, notes: "No onions" },
-      { id: "item-5", name: "Eggs Benedict", quantity: 2, notes: "" },
-      { id: "item-6", name: "Red Wine", quantity: 1, notes: "" }
-    ],
-    customer: "Emma Johnson",
-    roomNumber: "215"
-  },
-  {
-    id: "order-789",
-    orderNumber: "12347",
-    time: "11:45 AM",
-    status: "preparing" as const,
-    items: [
-      { id: "item-7", name: "Chocolate Lava Cake", quantity: 2, notes: "" },
-      { id: "item-8", name: "Avocado Toast", quantity: 1, notes: "Extra avocado" }
-    ],
-    customer: "Michael Brown",
-    roomNumber: "412"
-  },
-  {
-    id: "order-101",
-    orderNumber: "12348",
-    time: "12:00 PM",
-    status: "ready" as const,
-    items: [
-      { id: "item-9", name: "Caesar Salad", quantity: 1, notes: "" },
-      { id: "item-10", name: "Steak Frites", quantity: 1, notes: "Medium rare" }
-    ],
-    customer: "Sarah Davis",
-    roomNumber: "506"
-  },
-  {
-    id: "order-112",
-    orderNumber: "12349",
-    time: "12:15 PM",
-    status: "ready" as const,
-    items: [
-      { id: "item-11", name: "Margherita Pizza", quantity: 1, notes: "Extra cheese" }
-    ],
-    customer: "Robert Wilson",
-    roomNumber: "128"
-  }
-];
+// Fix the type definition for order status to ensure compatibility
+type OrderStatus = "pending" | "preparing" | "ready" | "delivered";
 
-const Kitchen: React.FC = () => {
-  const [orders, setOrders] = useState(initialOrders);
-  const [activeTab, setActiveTab] = useState("all");
-  const { toast } = useToast();
-  
-  const handleUpdateStatus = (orderId: string, newStatus: "preparing" | "ready" | "delivered") => {
-    // In a real app, this would update the order status in the database
-    setOrders(orders.map(order => 
-      order.id === orderId ? { ...order, status: newStatus } : order
-    ));
-    
-    const orderNumber = orders.find(o => o.id === orderId)?.orderNumber;
-    
-    toast({
-      title: "Status updated",
-      description: `Order #${orderNumber} status updated to ${newStatus}`,
-    });
-  };
-  
-  const filterOrders = () => {
-    if (activeTab === "all") return orders;
-    return orders.filter(order => order.status === activeTab);
-  };
-  
-  const filteredOrders = filterOrders();
-
-  return (
-    <AdminLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Kitchen View</h1>
-          <div className="flex items-center space-x-2">
-            <span className="text-sm font-medium text-gray-700">Current Time:</span>
-            <span className="font-medium">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-          </div>
-        </div>
-        
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-4 w-full max-w-md">
-            <TabsTrigger value="all">
-              All Orders
-              <Badge variant="secondary" className="ml-2">
-                {orders.length}
-              </Badge>
-            </TabsTrigger>
-            <TabsTrigger value="pending">
-              Pending
-              <Badge variant="secondary" className="ml-2">
-                {orders.filter(o => o.status === "pending").length}
-              </Badge>
-            </TabsTrigger>
-            <TabsTrigger value="preparing">
-              Preparing
-              <Badge variant="secondary" className="ml-2">
-                {orders.filter(o => o.status === "preparing").length}
-              </Badge>
-            </TabsTrigger>
-            <TabsTrigger value="ready">
-              Ready
-              <Badge variant="secondary" className="ml-2">
-                {orders.filter(o => o.status === "ready").length}
-              </Badge>
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredOrders.map((order) => (
-            <OrderCard 
-              key={order.id} 
-              order={order} 
-              onUpdateStatus={handleUpdateStatus} 
-            />
-          ))}
-          
-          {filteredOrders.length === 0 && (
-            <div className="col-span-full bg-white rounded-lg shadow-sm p-8 text-center">
-              <h3 className="text-lg font-medium mb-2">No Orders</h3>
-              <p className="text-gray-500">There are no orders with this status at the moment.</p>
-            </div>
-          )}
-        </div>
-      </div>
-    </AdminLayout>
-  );
-};
-
-interface OrderCardProps {
-  order: (typeof initialOrders)[0];
-  onUpdateStatus: (orderId: string, newStatus: "preparing" | "ready" | "delivered") => void;
+interface OrderItem {
+  id: string;
+  name: string;
+  quantity: number;
+  notes: string;
 }
 
-const OrderCard: React.FC<OrderCardProps> = ({ order, onUpdateStatus }) => {
-  const getStatusColor = () => {
-    switch (order.status) {
-      case "pending":
-        return "bg-yellow-50";
-      case "preparing":
-        return "bg-blue-50";
-      case "ready":
-        return "bg-green-50";
-      default:
-        return "bg-white";
+interface Order {
+  id: string;
+  orderNumber: string;
+  time: string;
+  status: OrderStatus;
+  items: OrderItem[];
+  customer: string;
+  roomNumber: string;
+}
+
+const Kitchen = () => {
+  // Using the fixed type definition
+  const [orders, setOrders] = useState<Order[]>([
+    {
+      id: "order1",
+      orderNumber: "ORD-5674",
+      time: "10:30 AM",
+      status: "pending",
+      items: [
+        { id: "1", name: "Paneer Butter Masala", quantity: 1, notes: "Extra spicy" },
+        { id: "2", name: "Garlic Naan", quantity: 2, notes: "" }
+      ],
+      customer: "John Doe",
+      roomNumber: "204"
+    },
+    {
+      id: "order2",
+      orderNumber: "ORD-5675",
+      time: "10:45 AM",
+      status: "preparing",
+      items: [
+        { id: "3", name: "Chicken Biryani", quantity: 1, notes: "No cilantro" },
+        { id: "4", name: "Raita", quantity: 1, notes: "" }
+      ],
+      customer: "Jane Smith",
+      roomNumber: "315"
+    },
+    {
+      id: "order3",
+      orderNumber: "ORD-5676",
+      time: "11:00 AM",
+      status: "ready",
+      items: [
+        { id: "5", name: "Masala Dosa", quantity: 2, notes: "" },
+        { id: "6", name: "Filter Coffee", quantity: 2, notes: "One with less sugar" }
+      ],
+      customer: "Michael Johnson",
+      roomNumber: "427"
     }
-  };
+  ]);
+
+  const { toast } = useToast();
   
-  const getStatusText = () => {
-    switch (order.status) {
-      case "pending":
-        return "Pending";
-      case "preparing":
-        return "Preparing";
-      case "ready":
-        return "Ready for Delivery";
-      default:
-        return "Unknown Status";
-    }
+  const updateOrderStatus = (orderId: string, newStatus: OrderStatus) => {
+    // Create a new array to avoid mutation issues with TypeScript
+    const updatedOrders = orders.map(order => 
+      order.id === orderId ? { ...order, status: newStatus } : order
+    );
+    
+    setOrders(updatedOrders);
+    
+    toast({
+      title: "Order Updated",
+      description: `Order ${orderId} status changed to ${newStatus}`,
+    });
   };
-  
-  const getActionButton = () => {
-    switch (order.status) {
-      case "pending":
-        return (
-          <Button 
-            onClick={() => onUpdateStatus(order.id, "preparing")} 
-            className="w-full"
-          >
-            Start Preparing
-          </Button>
-        );
-      case "preparing":
-        return (
-          <Button 
-            onClick={() => onUpdateStatus(order.id, "ready")} 
-            className="w-full"
-          >
-            Mark as Ready
-          </Button>
-        );
-      case "ready":
-        return (
-          <Button 
-            onClick={() => onUpdateStatus(order.id, "delivered")} 
-            variant="outline" 
-            className="w-full"
-          >
-            Mark as Delivered
-          </Button>
-        );
-      default:
-        return null;
-    }
-  };
+
+  const pendingOrders = orders.filter(order => order.status === "pending");
+  const preparingOrders = orders.filter(order => order.status === "preparing");
+  const readyOrders = orders.filter(order => order.status === "ready");
   
   return (
-    <Card className={`overflow-hidden ${getStatusColor()}`}>
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-start">
-          <div>
-            <CardTitle>Order #{order.orderNumber}</CardTitle>
-            <p className="text-sm text-gray-500">{order.time}</p>
-          </div>
-          <Badge variant={order.status === "pending" ? "outline" : "default"}>
-            {getStatusText()}
-          </Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="mb-4">
-          <div className="flex items-center text-gray-700 mb-2">
-            <User size={16} className="mr-2" />
-            <span className="text-sm">{order.customer} (Room {order.roomNumber})</span>
-          </div>
-          <div className="flex items-center text-gray-700">
-            <Clock size={16} className="mr-2" />
-            <span className="text-sm">
-              {order.status === "pending" 
-                ? "Waiting for preparation" 
-                : order.status === "preparing" 
-                  ? "Currently preparing" 
-                  : "Ready for pickup"}
-            </span>
-          </div>
-        </div>
+    <AdminLayout>
+      <div className="p-6">
+        <h1 className="text-3xl font-bold mb-6 text-green-800">Kitchen Dashboard</h1>
         
-        <h3 className="font-medium mb-2">Items</h3>
-        <ul className="space-y-2 mb-4">
-          {order.items.map((item) => (
-            <li key={item.id} className="flex justify-between">
-              <div>
-                <span className="font-medium">{item.quantity}x</span> {item.name}
-                {item.notes && (
-                  <p className="text-xs text-gray-500">{item.notes}</p>
-                )}
+        <Tabs defaultValue="pending" className="w-full">
+          <TabsList className="grid grid-cols-3 mb-8">
+            <TabsTrigger value="pending" className="data-[state=active]:bg-green-600 data-[state=active]:text-white flex gap-2">
+              <Clock size={18} />
+              Pending ({pendingOrders.length})
+            </TabsTrigger>
+            <TabsTrigger value="preparing" className="data-[state=active]:bg-green-600 data-[state=active]:text-white flex gap-2">
+              <ChefHat size={18} />
+              Preparing ({preparingOrders.length})
+            </TabsTrigger>
+            <TabsTrigger value="ready" className="data-[state=active]:bg-green-600 data-[state=active]:text-white flex gap-2">
+              <CheckCircle2 size={18} />
+              Ready ({readyOrders.length})
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="pending">
+            {pendingOrders.length > 0 ? (
+              <div className="grid gap-6">
+                {pendingOrders.map(order => (
+                  <div key={order.id} className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <div className="flex justify-between items-center mb-3">
+                      <div>
+                        <span className="font-medium text-lg">{order.orderNumber}</span>
+                        <span className="text-gray-500 ml-3">{order.time}</span>
+                      </div>
+                      <OrderStatusBadge status={order.status} />
+                    </div>
+                    
+                    <ul className="mb-3">
+                      {order.items.map(item => (
+                        <li key={item.id} className="py-1 border-b border-gray-100 last:border-0">
+                          <div className="flex justify-between">
+                            <span>{item.quantity}x {item.name}</span>
+                          </div>
+                          {item.notes && <p className="text-sm text-gray-500 mt-1">{item.notes}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className="flex justify-between items-center mt-4">
+                      <div className="text-sm">
+                        <p>Customer: <span className="font-medium">{order.customer}</span></p>
+                        <p>Room: <span className="font-medium">{order.roomNumber}</span></p>
+                      </div>
+                      <Button 
+                        onClick={() => updateOrderStatus(order.id, "preparing")} 
+                        className="bg-green-600 hover:bg-green-700"
+                      >
+                        Start Preparing
+                      </Button>
+                    </div>
+                  </div>
+                ))}
               </div>
-              {order.status === "preparing" && (
-                <Button variant="outline" size="icon" className="h-6 w-6">
-                  <Check size={14} />
-                </Button>
-              )}
-            </li>
-          ))}
-        </ul>
-        
-        {getActionButton()}
-      </CardContent>
-    </Card>
+            ) : (
+              <p className="text-center py-8 text-gray-500">No pending orders at the moment</p>
+            )}
+          </TabsContent>
+          
+          <TabsContent value="preparing">
+            {preparingOrders.length > 0 ? (
+              <div className="grid gap-6">
+                {preparingOrders.map(order => (
+                  <div key={order.id} className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <div className="flex justify-between items-center mb-3">
+                      <div>
+                        <span className="font-medium text-lg">{order.orderNumber}</span>
+                        <span className="text-gray-500 ml-3">{order.time}</span>
+                      </div>
+                      <OrderStatusBadge status={order.status} />
+                    </div>
+                    
+                    <ul className="mb-3">
+                      {order.items.map(item => (
+                        <li key={item.id} className="py-1 border-b border-gray-100 last:border-0">
+                          <div className="flex justify-between">
+                            <span>{item.quantity}x {item.name}</span>
+                          </div>
+                          {item.notes && <p className="text-sm text-gray-500 mt-1">{item.notes}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className="flex justify-between items-center mt-4">
+                      <div className="text-sm">
+                        <p>Customer: <span className="font-medium">{order.customer}</span></p>
+                        <p>Room: <span className="font-medium">{order.roomNumber}</span></p>
+                      </div>
+                      <Button 
+                        onClick={() => updateOrderStatus(order.id, "ready")} 
+                        className="bg-green-600 hover:bg-green-700"
+                      >
+                        Mark as Ready
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center py-8 text-gray-500">No orders being prepared at the moment</p>
+            )}
+          </TabsContent>
+          
+          <TabsContent value="ready">
+            {readyOrders.length > 0 ? (
+              <div className="grid gap-6">
+                {readyOrders.map(order => (
+                  <div key={order.id} className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <div className="flex justify-between items-center mb-3">
+                      <div>
+                        <span className="font-medium text-lg">{order.orderNumber}</span>
+                        <span className="text-gray-500 ml-3">{order.time}</span>
+                      </div>
+                      <OrderStatusBadge status={order.status} />
+                    </div>
+                    
+                    <ul className="mb-3">
+                      {order.items.map(item => (
+                        <li key={item.id} className="py-1 border-b border-gray-100 last:border-0">
+                          <div className="flex justify-between">
+                            <span>{item.quantity}x {item.name}</span>
+                          </div>
+                          {item.notes && <p className="text-sm text-gray-500 mt-1">{item.notes}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className="flex justify-between items-center mt-4">
+                      <div className="text-sm">
+                        <p>Customer: <span className="font-medium">{order.customer}</span></p>
+                        <p>Room: <span className="font-medium">{order.roomNumber}</span></p>
+                      </div>
+                      <Button 
+                        onClick={() => updateOrderStatus(order.id, "delivered")} 
+                        className="bg-green-600 hover:bg-green-700"
+                      >
+                        Mark as Delivered
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center py-8 text-gray-500">No orders ready for delivery at the moment</p>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
+    </AdminLayout>
   );
 };
 
