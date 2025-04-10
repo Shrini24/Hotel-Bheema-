@@ -13,84 +13,85 @@ const categories = [
   { id: "breakfast", name: "Breakfast" },
   { id: "lunch", name: "Lunch" },
   { id: "dinner", name: "Dinner" },
+  { id: "indian", name: "Indian Specialties" },
 ];
 
 const dishes = [
   {
     id: "1",
-    name: "Grilled Salmon",
-    description: "Fresh Atlantic salmon grilled to perfection with herbs and lemon butter sauce. Served with seasonal vegetables.",
-    price: 28.99,
-    image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsbW9ufGVufDB8fDB8fHww",
-    categoryId: "dinner",
+    name: "Paneer Butter Masala",
+    description: "Soft paneer cubes simmered in a rich, creamy tomato sauce flavored with butter and aromatic spices.",
+    price: 299.99,
+    image: "public/lovable-uploads/8877e892-9736-4510-8f2e-af139e9e287e.png",
+    categoryId: "indian",
     mealType: "dinner",
-    dietary: ["Gluten Free", "Protein Rich"]
+    dietary: ["Vegetarian"]
   },
   {
     id: "2",
-    name: "Truffle Risotto",
-    description: "Creamy Arborio rice slowly cooked with white wine, finished with black truffle and parmesan cheese.",
-    price: 22.50,
-    image: "https://images.unsplash.com/photo-1633478862406-b5b653860cd9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmlzb3R0b3xlbnwwfHwwfHx8MA%3D%3D",
-    categoryId: "lunch",
+    name: "Chicken 65",
+    description: "Spicy, deep-fried chicken chunks marinated with ginger, garlic, red chilies and aromatic spices. A popular South Indian appetizer.",
+    price: 349.50,
+    image: "public/lovable-uploads/209119b3-e95b-4f4a-bed7-8f9f8fa6c956.png",
+    categoryId: "indian",
     mealType: "lunch",
-    dietary: ["Vegetarian"]
+    dietary: ["Spicy", "Protein Rich"]
   },
   {
     id: "3",
-    name: "New York Cheesecake",
-    description: "Classic New York style cheesecake with graham cracker crust, topped with seasonal berries.",
-    price: 12.99,
-    image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNoZWVzZWNha2V8ZW58MHx8MHx8fDA%3D",
-    categoryId: "desserts",
+    name: "Chicken Curry",
+    description: "Tender chicken pieces cooked in a flavorful gravy with onions, tomatoes, and traditional Indian spice blend.",
+    price: 329.99,
+    image: "public/lovable-uploads/896f21a9-dc46-47cb-b4df-9b848f8cd5bd.png",
+    categoryId: "indian",
     mealType: "dinner",
-    dietary: ["Vegetarian"]
+    dietary: ["Protein Rich"]
   },
   {
     id: "4",
-    name: "Caprese Salad",
-    description: "Fresh mozzarella, tomatoes, and basil drizzled with balsamic glaze and extra virgin olive oil.",
-    price: 14.50,
-    image: "https://images.unsplash.com/photo-1500217052183-bc01a3d40c343759:0xedd01d3063057a45!2m2!1d78.8277892!2d9.3707129?entry=ttu&g_ep=EgoyMDI1MDQwNy4wIKXMDSoASAFQAw%3D%3D",
-    categoryId: "appetizers",
+    name: "Chilli Chicken",
+    description: "Indo-Chinese specialty with crispy chicken tossed in a spicy sauce with bell peppers and green chilies.",
+    price: 329.50,
+    image: "public/lovable-uploads/2d57d03b-d3e4-430a-8230-262e0ea6c51f.png",
+    categoryId: "indian",
     mealType: "lunch",
-    dietary: ["Vegetarian", "Gluten Free"]
+    dietary: ["Spicy", "Indo-Chinese"]
   },
   {
     id: "5",
-    name: "Eggs Benedict",
-    description: "Poached eggs and Canadian bacon on English muffins, topped with hollandaise sauce.",
-    price: 16.99,
-    image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWdncyUyMGJlbmVkaWN0fGVufDB8fDB8fHww",
-    categoryId: "breakfast",
-    mealType: "breakfast",
-    dietary: []
+    name: "Mutton Seekh Kebab",
+    description: "Minced lamb mixed with herbs and spices, skewered and grilled to perfection. Served with mint chutney.",
+    price: 399.99,
+    image: "public/lovable-uploads/81827a18-6710-4b47-8b3c-7758c22bb780.png",
+    categoryId: "indian",
+    mealType: "dinner",
+    dietary: ["Protein Rich"]
   },
   {
     id: "6",
-    name: "Fresh Fruit Platter",
-    description: "Seasonal fruits, honey yogurt dip, and granola. A healthy start to your day.",
-    price: 12.00,
-    image: "https://images.unsplash.com/photo-1490323948693-47ed5a81135e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJ1aXQlMjBwbGF0dGVyfGVufDB8fDB8fHww",
-    categoryId: "breakfast",
-    mealType: "breakfast",
-    dietary: ["Vegan", "Gluten Free"]
+    name: "Chicken Biryani",
+    description: "Fragrant basmati rice cooked with marinated chicken pieces, saffron, and aromatic spices. Served with raita.",
+    price: 349.00,
+    image: "public/lovable-uploads/cd78d480-6b96-4d0f-8d18-0993717f1e5d.png",
+    categoryId: "indian",
+    mealType: "lunch",
+    dietary: ["Signature Dish"]
   },
   {
     id: "7",
-    name: "Chocolate Lava Cake",
-    description: "Warm chocolate cake with a molten chocolate center, served with vanilla ice cream.",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1617305855058-336d24456869?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hvY29sYXRlJTIwbGF2YSUyMGNha2V8ZW58MHx8MHx8fDA%3D",
-    categoryId: "desserts",
-    mealType: "dinner",
-    dietary: ["Vegetarian"]
+    name: "Vegetable Pakora",
+    description: "Mixed vegetables dipped in spiced gram flour batter and deep-fried. Served with tamarind and mint chutneys.",
+    price: 199.99,
+    image: "public/lovable-uploads/a366f4a5-7fde-44ba-bcf9-81fa4436dbdf.png",
+    categoryId: "indian",
+    mealType: "breakfast",
+    dietary: ["Vegetarian", "Vegan"]
   },
   {
     id: "8",
     name: "Avocado Toast",
     description: "Multigrain toast topped with smashed avocado, poached eggs, and microgreens.",
-    price: 14.50,
+    price: 249.50,
     image: "https://images.unsplash.com/photo-1603046891744-1f76ace3f196?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2FkbyUyMHRvYXN0fGVufDB8fDB8fHww",
     categoryId: "breakfast",
     mealType: "breakfast",
@@ -98,23 +99,23 @@ const dishes = [
   },
   {
     id: "9",
-    name: "Chicken Caesar Salad",
-    description: "Grilled chicken breast, romaine lettuce, parmesan, croutons, and Caesar dressing.",
-    price: 16.50,
-    image: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Flc2FyJTIwc2FsYWR8ZW58MHx8MHx8fDA%3D",
-    categoryId: "lunch",
-    mealType: "lunch",
-    dietary: ["Protein Rich"]
+    name: "Masala Dosa",
+    description: "Crispy rice and lentil crepe filled with spiced potato filling. Served with coconut chutney and sambar.",
+    price: 199.50,
+    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG9zYXxlbnwwfHwwfHx8MA%3D%3D",
+    categoryId: "indian",
+    mealType: "breakfast",
+    dietary: ["Vegetarian", "South Indian"]
   },
   {
     id: "10",
-    name: "Beef Burger",
-    description: "Premium beef patty, lettuce, tomato, cheese, and special sauce in a brioche bun. Served with fries.",
-    price: 18.99,
-    image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmVlZiUyMGJ1cmdlcnxlbnwwfHwwfHx8MA%3D%3D",
-    categoryId: "lunch",
-    mealType: "lunch",
-    dietary: []
+    name: "Butter Chicken",
+    description: "Tender chicken cooked in a creamy tomato sauce with butter and aromatic spices. A North Indian classic.",
+    price: 349.99,
+    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D",
+    categoryId: "indian",
+    mealType: "dinner",
+    dietary: ["Signature Dish"]
   }
 ];
 
@@ -139,7 +140,8 @@ const Menu = () => {
 
   // Filter dishes based on search query and active category
   const filteredDishes = dishes.filter((dish) => {
-    const matchesCategory = activeCategory === "all" || dish.mealType === activeCategory;
+    const matchesCategory = activeCategory === "all" || dish.mealType === activeCategory || 
+                           (activeCategory === "indian" && dish.categoryId === "indian");
     const matchesSearch = dish.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           dish.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
@@ -149,12 +151,17 @@ const Menu = () => {
   const mealSections = {
     breakfast: filteredDishes.filter(dish => dish.mealType === "breakfast"),
     lunch: filteredDishes.filter(dish => dish.mealType === "lunch"),
-    dinner: filteredDishes.filter(dish => dish.mealType === "dinner")
+    dinner: filteredDishes.filter(dish => dish.mealType === "dinner"),
+    indian: filteredDishes.filter(dish => dish.categoryId === "indian")
   };
 
   // Only show sections that have dishes when filtering
   const visibleSections = Object.entries(mealSections)
-    .filter(([_, dishes]) => dishes.length > 0 || activeCategory === "all");
+    .filter(([sectionName, dishes]) => {
+      if (activeCategory === "all") return dishes.length > 0;
+      if (activeCategory === "indian") return sectionName === "indian" && dishes.length > 0;
+      return sectionName === activeCategory && dishes.length > 0;
+    });
 
   return (
     <Layout>
@@ -162,7 +169,7 @@ const Menu = () => {
         <div className="mb-10">
           <h1 className="text-3xl font-serif font-bold mb-3 text-green-700">Our Menu</h1>
           <p className="text-gray-600 max-w-3xl">
-            Discover our exquisite selection of dishes crafted by our award-winning chefs. 
+            Discover our exquisite selection of dishes including authentic Indian specialties crafted by our award-winning chefs. 
             All meals are prepared with the freshest ingredients and can be delivered 
             directly to your room.
           </p>
@@ -190,8 +197,70 @@ const Menu = () => {
 
         {visibleSections.length > 0 ? (
           <div className="space-y-12">
+            {activeCategory === "indian" && (
+              <div className="mb-10">
+                <div className="flex items-center mb-6">
+                  <div className="h-1 bg-green-500 flex-grow mr-4"></div>
+                  <h2 className="text-2xl font-serif font-semibold text-green-700">Indian Specialties</h2>
+                  <div className="h-1 bg-green-500 flex-grow ml-4"></div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {mealSections.indian.map((dish) => (
+                    <DishCard
+                      key={dish.id}
+                      id={dish.id}
+                      name={dish.name}
+                      description={dish.description}
+                      price={dish.price}
+                      image={dish.image}
+                      category={dish.categoryId === "indian" ? "Indian" : dish.mealType}
+                      dietary={dish.dietary}
+                      onAddToCart={handleAddToCart}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
             {activeCategory === "all" && (
               <>
+                {/* Indian Specialties Section */}
+                {mealSections.indian.length > 0 && (
+                  <div className="mb-10">
+                    <div className="flex items-center mb-6">
+                      <div className="h-1 bg-green-500 flex-grow mr-4"></div>
+                      <h2 className="text-2xl font-serif font-semibold text-green-700">Indian Specialties</h2>
+                      <div className="h-1 bg-green-500 flex-grow ml-4"></div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {mealSections.indian.filter((_, index) => index < 3).map((dish) => (
+                        <DishCard
+                          key={dish.id}
+                          id={dish.id}
+                          name={dish.name}
+                          description={dish.description}
+                          price={dish.price}
+                          image={dish.image}
+                          category={"Indian"}
+                          dietary={dish.dietary}
+                          onAddToCart={handleAddToCart}
+                        />
+                      ))}
+                    </div>
+                    {mealSections.indian.length > 3 && (
+                      <div className="text-center mt-4">
+                        <Button 
+                          variant="outline" 
+                          className="border-green-300 text-green-700" 
+                          onClick={() => setActiveCategory("indian")}
+                        >
+                          View All Indian Dishes
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* Breakfast Section */}
                 {mealSections.breakfast.length > 0 && (
                   <div className="mb-10">
@@ -201,7 +270,7 @@ const Menu = () => {
                       <div className="h-1 bg-green-500 flex-grow ml-4"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {mealSections.breakfast.map((dish) => (
+                      {mealSections.breakfast.filter(dish => dish.categoryId !== "indian").map((dish) => (
                         <DishCard
                           key={dish.id}
                           id={dish.id}
@@ -219,7 +288,7 @@ const Menu = () => {
                 )}
 
                 {/* Lunch Section */}
-                {mealSections.lunch.length > 0 && (
+                {mealSections.lunch.length > 0 && mealSections.lunch.filter(dish => dish.categoryId !== "indian").length > 0 && (
                   <div className="mb-10">
                     <div className="flex items-center mb-6">
                       <div className="h-1 bg-green-500 flex-grow mr-4"></div>
@@ -227,7 +296,7 @@ const Menu = () => {
                       <div className="h-1 bg-green-500 flex-grow ml-4"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {mealSections.lunch.map((dish) => (
+                      {mealSections.lunch.filter(dish => dish.categoryId !== "indian").map((dish) => (
                         <DishCard
                           key={dish.id}
                           id={dish.id}
@@ -245,7 +314,7 @@ const Menu = () => {
                 )}
 
                 {/* Dinner Section */}
-                {mealSections.dinner.length > 0 && (
+                {mealSections.dinner.length > 0 && mealSections.dinner.filter(dish => dish.categoryId !== "indian").length > 0 && (
                   <div className="mb-10">
                     <div className="flex items-center mb-6">
                       <div className="h-1 bg-green-500 flex-grow mr-4"></div>
@@ -253,7 +322,7 @@ const Menu = () => {
                       <div className="h-1 bg-green-500 flex-grow ml-4"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {mealSections.dinner.map((dish) => (
+                      {mealSections.dinner.filter(dish => dish.categoryId !== "indian").map((dish) => (
                         <DishCard
                           key={dish.id}
                           id={dish.id}
@@ -273,7 +342,7 @@ const Menu = () => {
             )}
 
             {/* Show filtered results based on category */}
-            {activeCategory !== "all" && (
+            {activeCategory !== "all" && activeCategory !== "indian" && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredDishes.map((dish) => (
                   <DishCard

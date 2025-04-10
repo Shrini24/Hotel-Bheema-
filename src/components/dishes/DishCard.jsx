@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { IndianRupee } from "lucide-react";
 
 const DishCard = ({
   id,
@@ -31,7 +32,10 @@ const DishCard = ({
       <CardHeader className="pt-4 pb-0">
         <div className="flex justify-between items-start">
           <h3 className="font-semibold text-lg font-serif text-green-800">{name}</h3>
-          <span className="font-bold text-green-700">₹{formattedPrice}</span>
+          <span className="font-bold text-green-700 flex items-center">
+            <IndianRupee className="h-4 w-4 mr-1" />
+            {formattedPrice}
+          </span>
         </div>
       </CardHeader>
       <CardContent className="pt-2">
