@@ -9,7 +9,8 @@ const useMenuFiltering = (dishes) => {
   const filteredDishes = useMemo(() => {
     return dishes.filter((dish) => {
       const matchesCategory = activeCategory === "all" || dish.mealType === activeCategory || 
-                           (activeCategory === "indian" && dish.categoryId === "indian");
+                           (activeCategory === "indian" && dish.categoryId === "indian") ||
+                           (activeCategory === "chinese" && dish.categoryId === "chinese");
       const matchesSearch = dish.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           dish.description.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
@@ -22,7 +23,8 @@ const useMenuFiltering = (dishes) => {
       breakfast: filteredDishes.filter(dish => dish.mealType === "breakfast"),
       lunch: filteredDishes.filter(dish => dish.mealType === "lunch"),
       dinner: filteredDishes.filter(dish => dish.mealType === "dinner"),
-      indian: filteredDishes.filter(dish => dish.categoryId === "indian")
+      indian: filteredDishes.filter(dish => dish.categoryId === "indian"),
+      chinese: filteredDishes.filter(dish => dish.categoryId === "chinese")
     };
   }, [filteredDishes]);
 
@@ -32,6 +34,7 @@ const useMenuFiltering = (dishes) => {
       .filter(([sectionName, dishes]) => {
         if (activeCategory === "all") return dishes.length > 0;
         if (activeCategory === "indian") return sectionName === "indian" && dishes.length > 0;
+        if (activeCategory === "chinese") return sectionName === "chinese" && dishes.length > 0;
         return sectionName === activeCategory && dishes.length > 0;
       });
   }, [mealSections, activeCategory]);

@@ -8,6 +8,7 @@ import MenuHeader from "@/components/menu/MenuHeader";
 import MenuSearch from "@/components/menu/MenuSearch";
 import AllCategoriesView from "@/components/menu/AllCategoriesView";
 import IndianSpecialtiesView from "@/components/menu/IndianSpecialtiesView";
+import ChineseFusionView from "@/components/menu/ChineseFusionView";
 import CategoryView from "@/components/menu/CategoryView";
 import EmptyResults from "@/components/menu/EmptyResults";
 
@@ -61,6 +62,13 @@ const Menu = () => {
               />
             )}
 
+            {activeCategory === "chinese" && (
+              <ChineseFusionView 
+                chineseDishes={mealSections.chinese} 
+                onAddToCart={handleAddToCart} 
+              />
+            )}
+
             {activeCategory === "all" && (
               <AllCategoriesView 
                 mealSections={mealSections} 
@@ -70,7 +78,9 @@ const Menu = () => {
             )}
 
             {/* Show filtered results based on category */}
-            {activeCategory !== "all" && activeCategory !== "indian" && (
+            {activeCategory !== "all" && 
+             activeCategory !== "indian" && 
+             activeCategory !== "chinese" && (
               <CategoryView
                 dishes={filteredDishes}
                 onAddToCart={handleAddToCart}

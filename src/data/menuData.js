@@ -6,6 +6,7 @@ export const categories = [
   { id: "lunch", name: "Lunch" },
   { id: "dinner", name: "Dinner" },
   { id: "indian", name: "Indian Specialties" },
+  { id: "chinese", name: "Chinese Fusion" },
 ];
 
 export const dishes = [
@@ -88,6 +89,77 @@ export const dishes = [
     categoryId: "indian",
     mealType: "dinner",
     dietary: ["Spicy", "Street Food"]
+  },
+  // New items added
+  {
+    id: "12",
+    name: "Chilly Paneer",
+    description: "Crispy paneer cubes tossed in a spicy and tangy Indo-Chinese sauce with bell peppers and onions.",
+    price: 289.50,
+    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=500&auto=format&fit=crop",
+    categoryId: "chinese",
+    mealType: "dinner",
+    dietary: ["Spicy", "Vegetarian", "Indo-Chinese"]
+  },
+  {
+    id: "13",
+    name: "Chilly Mushroom Dry",
+    description: "Crispy mushrooms stir-fried with bell peppers, onions, and spicy Indo-Chinese sauces.",
+    price: 269.50,
+    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500&auto=format&fit=crop",
+    categoryId: "chinese",
+    mealType: "dinner",
+    dietary: ["Spicy", "Vegetarian", "Indo-Chinese"]
+  },
+  {
+    id: "14",
+    name: "Dragon Paneer",
+    description: "Spicy paneer cubes in fiery red sauce with bell peppers, onions and special dragon spices.",
+    price: 309.50,
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop",
+    categoryId: "chinese",
+    mealType: "dinner", 
+    dietary: ["Very Spicy", "Vegetarian", "Indo-Chinese"]
+  },
+  {
+    id: "15",
+    name: "Gobi Manchurian Dry",
+    description: "Crispy cauliflower florets tossed in a spicy, sweet, and tangy Manchurian sauce.",
+    price: 249.50,
+    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&auto=format&fit=crop",
+    categoryId: "chinese",
+    mealType: "lunch",
+    dietary: ["Vegetarian", "Indo-Chinese"]
+  },
+  {
+    id: "16",
+    name: "Kaima Parotta",
+    description: "Flaky, layered parotta served with spicy minced meat. A South Indian delicacy.",
+    price: 299.50,
+    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500&auto=format&fit=crop",
+    categoryId: "indian",
+    mealType: "dinner",
+    dietary: ["Spicy", "Street Food"]
+  },
+  {
+    id: "17",
+    name: "Mixed Schezwan Fried Rice",
+    description: "Wok-tossed rice with vegetables, chicken, and egg in a spicy Schezwan sauce.",
+    price: 279.50,
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop",
+    categoryId: "chinese",
+    mealType: "lunch",
+    dietary: ["Spicy", "Indo-Chinese"]
+  },
+  {
+    id: "18",
+    name: "Mushroom Dry",
+    description: "Stir-fried mushrooms with garlic, ginger, and aromatic spices. A flavorful appetizer.",
+    price: 259.50,
+    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&auto=format&fit=crop",
+    categoryId: "indian",
+    mealType: "lunch",
+    dietary: ["Vegetarian"]
   },
   {
     id: "8",

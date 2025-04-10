@@ -12,6 +12,11 @@ const EmptyResults = ({ setSearchQuery, setActiveCategory }) => {
     setSearchQuery("");
     setActiveCategory("indian");
   };
+  
+  const handleShowChinese = () => {
+    setSearchQuery("");
+    setActiveCategory("chinese");
+  };
 
   return (
     <div className="text-center py-12">
@@ -19,7 +24,7 @@ const EmptyResults = ({ setSearchQuery, setActiveCategory }) => {
       <p className="mt-2 text-gray-500 mb-6">
         Try adjusting your search or filter criteria, or check out our new dishes.
       </p>
-      <div className="flex flex-col sm:flex-row justify-center gap-3">
+      <div className="flex flex-col sm:flex-row justify-center gap-3 mb-4">
         <Button onClick={handleShowAll} variant="outline">
           Show All Dishes
         </Button>
@@ -27,6 +32,9 @@ const EmptyResults = ({ setSearchQuery, setActiveCategory }) => {
           Try Our New Chilly Parotta
         </Button>
       </div>
+      <Button onClick={handleShowChinese} variant="outline" className="border-green-300 text-green-700">
+        Explore Indo-Chinese Fusion
+      </Button>
     </div>
   );
 };
