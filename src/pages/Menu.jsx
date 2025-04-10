@@ -31,9 +31,11 @@ const Menu = () => {
     // Some developers might add a log here
     console.log('Adding to cart:', id);
     
+    const dish = dishes.find(dish => dish.id === id);
+    
     toast({
       title: "Added to cart",
-      description: "Item has been added to your cart",
+      description: dish ? `${dish.name} has been added to your cart` : "Item has been added to your cart",
     });
   };
 
@@ -76,7 +78,10 @@ const Menu = () => {
             )}
           </div>
         ) : (
-          <EmptyResults />
+          <EmptyResults 
+            setSearchQuery={setSearchQuery} 
+            setActiveCategory={setActiveCategory} 
+          />
         )}
       </div>
     </Layout>

@@ -80,6 +80,16 @@ export const dishes = [
     dietary: ["Vegetarian", "Vegan"]
   },
   {
+    id: "11",
+    name: "Chilly Parotta",
+    description: "Shredded layers of flaky parotta stir-fried with bell peppers, onions and spicy sauce. A popular South Indian street food fusion.",
+    price: 279.50,
+    image: "public/lovable-uploads/1060e10f-1ada-409f-bb79-cbf0b89dc4ad.png",
+    categoryId: "indian",
+    mealType: "dinner",
+    dietary: ["Spicy", "Street Food"]
+  },
+  {
     id: "8",
     name: "Avocado Toast",
     description: "Multigrain toast topped with smashed avocado, poached eggs, and microgreens.",
