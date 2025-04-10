@@ -22,32 +22,32 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-hotel-600 font-serif text-2xl font-bold">
+              <span className="text-green-600 font-serif text-2xl font-bold">
                 Hotel Bheema
               </span>
             </Link>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
                 to="/"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-500 hover:border-green-300 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Home
               </Link>
               <Link
                 to="/menu"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-500 hover:border-green-300 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Menu
               </Link>
               <Link
                 to="/orders"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-500 hover:border-green-300 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 My Orders
               </Link>
               <Link
                 to="/location"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-500 hover:border-green-300 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 <MapPin className="h-4 w-4 mr-1" />
                 Location
@@ -55,20 +55,20 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <Link to="/cart" className="relative p-1 rounded-full text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-hotel-500">
+            <Link to="/cart" className="relative p-1 rounded-full text-gray-600 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
               <ShoppingCart className="h-6 w-6" />
-              <Badge variant="destructive" className="absolute -top-1 -right-1 flex items-center justify-center">
+              <Badge variant="destructive" className="absolute -top-1 -right-1 flex items-center justify-center bg-green-600">
                 2
               </Badge>
             </Link>
             <div className="ml-3">
-              <Button variant="ghost" onClick={handleLoginClick} className="flex items-center space-x-1">
+              <Button variant="ghost" onClick={handleLoginClick} className="flex items-center space-x-1 text-green-700 hover:bg-green-50">
                 <User className="h-5 w-5" />
                 <span>Login</span>
               </Button>
             </div>
             <div className="ml-3">
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild className="border-green-300 text-green-700 hover:bg-green-50">
                 <Link to="/admin">Admin</Link>
               </Button>
             </div>

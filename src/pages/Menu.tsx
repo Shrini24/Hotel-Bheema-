@@ -9,11 +9,11 @@ import { Search } from "lucide-react";
 
 // Sample data
 const categories = [
-  { id: "appetizers", name: "Appetizers" },
-  { id: "main-course", name: "Main Course" },
+  { id: "breakfast", name: "Breakfast" },
+  { id: "lunch", name: "Lunch" },
+  { id: "dinner", name: "Dinner" },
   { id: "desserts", name: "Desserts" },
   { id: "beverages", name: "Beverages" },
-  { id: "breakfast", name: "Breakfast" },
 ];
 
 const dishes = [
@@ -23,7 +23,7 @@ const dishes = [
     description: "Fresh Atlantic salmon grilled to perfection with herbs and lemon butter sauce. Served with seasonal vegetables.",
     price: 28.99,
     image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsbW9ufGVufDB8fDB8fHww",
-    categoryId: "main-course",
+    categoryId: "dinner",
     dietary: ["Gluten Free", "Protein Rich"]
   },
   {
@@ -32,7 +32,7 @@ const dishes = [
     description: "Creamy Arborio rice slowly cooked with white wine, finished with black truffle and parmesan cheese.",
     price: 22.50,
     image: "https://images.unsplash.com/photo-1633478862406-b5b653860cd9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmlzb3R0b3xlbnwwfHwwfHx8MA%3D%3D",
-    categoryId: "main-course",
+    categoryId: "lunch",
     dietary: ["Vegetarian"]
   },
   {
@@ -50,7 +50,7 @@ const dishes = [
     description: "Fresh mozzarella, tomatoes, and basil drizzled with balsamic glaze and extra virgin olive oil.",
     price: 14.50,
     image: "https://images.unsplash.com/photo-1500217052183-bc01eee1a74e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FwcmVzZXxlbnwwfHwwfHx8MA%3D%3D",
-    categoryId: "appetizers",
+    categoryId: "lunch",
     dietary: ["Vegetarian", "Gluten Free"]
   },
   {
@@ -119,8 +119,8 @@ const Menu: React.FC = () => {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10">
-          <h1 className="text-3xl font-serif font-bold mb-3">Our Menu</h1>
-          <p className="text-gray-600 max-w-3xl">
+          <h1 className="text-3xl font-serif font-bold mb-3 text-green-800">Our Menu</h1>
+          <p className="text-green-700 max-w-3xl">
             Discover our exquisite selection of dishes crafted by our award-winning chefs. 
             All meals are prepared with the freshest ingredients and can be delivered 
             directly to your room.
@@ -129,11 +129,11 @@ const Menu: React.FC = () => {
 
         <div className="mb-6 flex flex-col sm:flex-row gap-4">
           <div className="relative w-full sm:w-80">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-400" size={18} />
             <Input 
               type="search"
               placeholder="Search dishes..."
-              className="pl-10"
+              className="pl-10 border-green-200 focus:border-green-300"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -165,8 +165,8 @@ const Menu: React.FC = () => {
           </div>
         ) : (
           <div className="text-center py-12">
-            <h3 className="text-lg font-medium text-gray-900">No dishes found</h3>
-            <p className="mt-2 text-gray-500">Try adjusting your search or filter criteria.</p>
+            <h3 className="text-lg font-medium text-green-800">No dishes found</h3>
+            <p className="mt-2 text-green-600">Try adjusting your search or filter criteria.</p>
           </div>
         )}
       </div>

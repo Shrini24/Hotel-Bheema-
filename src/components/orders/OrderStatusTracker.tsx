@@ -36,7 +36,7 @@ const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ currentStatus }
               <div
                 className={`rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center ${
                   index <= currentStep
-                    ? "bg-hotel-600 text-white"
+                    ? "bg-green-600 text-white"
                     : "bg-white border-2 border-gray-300 text-gray-400"
                 }`}
               >
@@ -51,7 +51,7 @@ const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ currentStatus }
               <div className="absolute top-14 text-center">
                 <p
                   className={`text-xs font-medium uppercase ${
-                    index <= currentStep ? "text-hotel-600" : "text-gray-500"
+                    index <= currentStep ? "text-green-600" : "text-gray-500"
                   }`}
                 >
                   {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -63,7 +63,7 @@ const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ currentStatus }
             {index < statuses.length - 1 && (
               <div
                 className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-                  index < currentStep ? "border-hotel-600" : "border-gray-300"
+                  index < currentStep ? "border-green-600" : "border-gray-300"
                 }`}
               ></div>
             )}

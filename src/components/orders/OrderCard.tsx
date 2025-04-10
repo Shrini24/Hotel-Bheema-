@@ -34,8 +34,8 @@ const OrderCard: React.FC<OrderCardProps> = ({
   onViewDetails
 }) => {
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
-      <CardHeader className="bg-gray-50 pb-2">
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg border-green-100">
+      <CardHeader className="bg-green-50 pb-2">
         <div className="flex justify-between items-start">
           <div>
             <p className="text-sm text-gray-500">Order #{orderNumber}</p>
@@ -53,7 +53,7 @@ const OrderCard: React.FC<OrderCardProps> = ({
               <span>
                 {item.quantity}x {item.name}
               </span>
-              <span className="text-gray-600">${(item.price * item.quantity).toFixed(2)}</span>
+              <span className="text-gray-600">₹{(item.price * item.quantity).toFixed(2)}</span>
             </li>
           ))}
           {items.length > 2 && (
@@ -70,9 +70,9 @@ const OrderCard: React.FC<OrderCardProps> = ({
           </div>
         )}
       </CardContent>
-      <CardFooter className="flex justify-between items-center border-t bg-gray-50">
-        <div className="font-semibold">${total.toFixed(2)}</div>
-        <Button variant="outline" onClick={() => onViewDetails(id)}>
+      <CardFooter className="flex justify-between items-center border-t bg-green-50">
+        <div className="font-semibold">₹{total.toFixed(2)}</div>
+        <Button variant="outline" onClick={() => onViewDetails(id)} className="text-green-700 border-green-200 hover:bg-green-50">
           View Details
         </Button>
       </CardFooter>
