@@ -12,183 +12,173 @@ export const categories = [
 export const dishes = [
   {
     id: "1",
-    name: "Paneer Butter Masala",
-    description: "Soft paneer cubes simmered in a rich, creamy tomato sauce flavored with butter and aromatic spices.",
-    price: 299.99,
-    image: "public/lovable-uploads/8877e892-9736-4510-8f2e-af139e9e287e.png",
-    categoryId: "indian",
+    name: "Chilly Panneer Gravy",
+    description: "Spicy paneer in a rich Indo-Chinese gravy.",
+    price: 173,
+    image: "public/Assets/Chiily_Panner.png",
+    categoryId: "chinese",
     mealType: "dinner",
     dietary: ["Vegetarian"]
   },
   {
     id: "2",
-    name: "Chicken 65",
-    description: "Spicy, deep-fried chicken chunks marinated with ginger, garlic, red chilies and aromatic spices. A popular South Indian appetizer.",
-    price: 349.50,
-    image: "public/lovable-uploads/209119b3-e95b-4f4a-bed7-8f9f8fa6c956.png",
-    categoryId: "indian",
-    mealType: "lunch",
-    dietary: ["Spicy", "Protein Rich"]
+    name: "Chilly Mushroom Dry",
+    description: "Crisp-fried mushrooms in spicy dry chilli sauce.",
+    price: 130,
+    image: "public/Assets/Chilly_Mushroom_dy.png",
+    categoryId: "chinese",
+    mealType: "dinner",
+    dietary: ["Vegetarian"]
   },
   {
     id: "3",
-    name: "Chicken Curry",
-    description: "Tender chicken pieces cooked in a flavorful gravy with onions, tomatoes, and traditional Indian spice blend.",
-    price: 329.99,
-    image: "public/lovable-uploads/896f21a9-dc46-47cb-b4df-9b848f8cd5bd.png",
+    name: "Chilly Parotta",
+    description: "Fried parotta tossed in chilli garlic masala.",
+    price: 145,
+    image: "public/Assets/Chilly_Parotta.png",
     categoryId: "indian",
     mealType: "dinner",
-    dietary: ["Protein Rich"]
+    dietary: ["Vegetarian"]
   },
   {
     id: "4",
-    name: "Chilli Chicken",
-    description: "Indo-Chinese specialty with crispy chicken tossed in a spicy sauce with bell peppers and green chilies.",
-    price: 329.50,
-    image: "public/lovable-uploads/2d57d03b-d3e4-430a-8230-262e0ea6c51f.png",
+    name: "Dragon Panneer",
+    description: "Crispy paneer in fiery dragon sauce.",
+    price: 173,
+    image: "public/Assets/Dragon_Panner.png",
     categoryId: "indian",
-    mealType: "lunch",
-    dietary: ["Spicy", "Indo-Chinese"]
+    mealType: "dinner",
+    dietary: ["Vegetarian"]
   },
   {
     id: "5",
-    name: "Mutton Seekh Kebab",
-    description: "Minced lamb mixed with herbs and spices, skewered and grilled to perfection. Served with mint chutney.",
-    price: 399.99,
-    image: "public/lovable-uploads/81827a18-6710-4b47-8b3c-7758c22bb780.png",
+    name: "Gobi Manchurian Dry",
+    description: "Fried cauliflower tossed in dry manchurian sauce.",
+    price: 111,
+    image: "public/Assets/Gobi_Machurian_Dry.png",
     categoryId: "indian",
     mealType: "dinner",
-    dietary: ["Protein Rich"]
+    dietary: ["Vegetarian"]
   },
   {
     id: "6",
-    name: "Chicken Biryani",
-    description: "Fragrant basmati rice cooked with marinated chicken pieces, saffron, and aromatic spices. Served with raita.",
-    price: 349.00,
-    image: "public/lovable-uploads/cd78d480-6b96-4d0f-8d18-0993717f1e5d.png",
+    name: "Kaima Parotta",
+    description: "Spicy minced parotta stir-fry in south Indian style.",
+    price: 145,
+    image: "public/Assets/kaima_parotta.png",
     categoryId: "indian",
-    mealType: "lunch",
-    dietary: ["Signature Dish"]
+    mealType: "dinner",
+    dietary: ["Vegetarian"]
   },
   {
     id: "7",
-    name: "Vegetable Pakora",
-    description: "Mixed vegetables dipped in spiced gram flour batter and deep-fried. Served with tamarind and mint chutneys.",
-    price: 199.99,
-    image: "public/lovable-uploads/a366f4a5-7fde-44ba-bcf9-81fa4436dbdf.png",
-    categoryId: "indian",
-    mealType: "breakfast",
-    dietary: ["Vegetarian", "Vegan"]
-  },
-  {
-    id: "11",
-    name: "Chilly Parotta",
-    description: "Shredded layers of flaky parotta stir-fried with bell peppers, onions and spicy sauce. A popular South Indian street food fusion.",
-    price: 279.50,
-    image: "public/lovable-uploads/1060e10f-1ada-409f-bb79-cbf0b89dc4ad.png",
-    categoryId: "indian",
-    mealType: "dinner",
-    dietary: ["Spicy", "Street Food"]
-  },
-  // New items added
-  {
-    id: "12",
-    name: "Chilly Paneer",
-    description: "Crispy paneer cubes tossed in a spicy and tangy Indo-Chinese sauce with bell peppers and onions.",
-    price: 289.50,
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=500&auto=format&fit=crop",
+    name: "Mixed Shezwan Fried Rice",
+    description: "Assorted veggies in schezwan flavored rice.",
+    price: 135,
+    image: "public/Assets/mixed_shezwan_fried_rice.png",
     categoryId: "chinese",
-    mealType: "dinner",
-    dietary: ["Spicy", "Vegetarian", "Indo-Chinese"]
-  },
-  {
-    id: "13",
-    name: "Chilly Mushroom Dry",
-    description: "Crispy mushrooms stir-fried with bell peppers, onions, and spicy Indo-Chinese sauces.",
-    price: 269.50,
-    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500&auto=format&fit=crop",
-    categoryId: "chinese",
-    mealType: "dinner",
-    dietary: ["Spicy", "Vegetarian", "Indo-Chinese"]
-  },
-  {
-    id: "14",
-    name: "Dragon Paneer",
-    description: "Spicy paneer cubes in fiery red sauce with bell peppers, onions and special dragon spices.",
-    price: 309.50,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop",
-    categoryId: "chinese",
-    mealType: "dinner", 
-    dietary: ["Very Spicy", "Vegetarian", "Indo-Chinese"]
-  },
-  {
-    id: "15",
-    name: "Gobi Manchurian Dry",
-    description: "Crispy cauliflower florets tossed in a spicy, sweet, and tangy Manchurian sauce.",
-    price: 249.50,
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&auto=format&fit=crop",
-    categoryId: "chinese",
-    mealType: "lunch",
-    dietary: ["Vegetarian", "Indo-Chinese"]
-  },
-  {
-    id: "16",
-    name: "Kaima Parotta",
-    description: "Flaky, layered parotta served with spicy minced meat. A South Indian delicacy.",
-    price: 299.50,
-    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500&auto=format&fit=crop",
-    categoryId: "indian",
-    mealType: "dinner",
-    dietary: ["Spicy", "Street Food"]
-  },
-  {
-    id: "17",
-    name: "Mixed Schezwan Fried Rice",
-    description: "Wok-tossed rice with vegetables, chicken, and egg in a spicy Schezwan sauce.",
-    price: 279.50,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop",
-    categoryId: "chinese",
-    mealType: "lunch",
-    dietary: ["Spicy", "Indo-Chinese"]
-  },
-  {
-    id: "18",
-    name: "Mushroom Dry",
-    description: "Stir-fried mushrooms with garlic, ginger, and aromatic spices. A flavorful appetizer.",
-    price: 259.50,
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&auto=format&fit=crop",
-    categoryId: "indian",
     mealType: "lunch",
     dietary: ["Vegetarian"]
   },
   {
     id: "8",
-    name: "Avocado Toast",
-    description: "Multigrain toast topped with smashed avocado, poached eggs, and microgreens.",
-    price: 249.50,
-    image: "https://images.unsplash.com/photo-1603046891744-1f76ace3f196?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2FkbyUyMHRvYXN0fGVufDB8fDB8fHww",
-    categoryId: "breakfast",
-    mealType: "breakfast",
+    name: "Mushroom Manchurian Dry",
+    description: "Crispy mushroom balls tossed in spicy sauce.",
+    price: 130,
+    image: "public/Assets/Mushroom_dry.png",
+    categoryId: "chinese",
+    mealType: "dinner",
     dietary: ["Vegetarian"]
   },
   {
     id: "9",
-    name: "Masala Dosa",
-    description: "Crispy rice and lentil crepe filled with spiced potato filling. Served with coconut chutney and sambar.",
-    price: 199.50,
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG9zYXxlbnwwfHwwfHx8MA%3D%3D",
-    categoryId: "indian",
-    mealType: "breakfast",
-    dietary: ["Vegetarian", "South Indian"]
+    name: "Mushroom Noodles",
+    description: "Chinese-style noodles with stir-fried mushrooms.",
+    price: 124,
+    image: "public/Assets/Mushroom_noodles.png",
+    categoryId: "chinese",
+    mealType: "lunch",
+    dietary: ["Vegetarian"]
   },
   {
     id: "10",
-    name: "Butter Chicken",
-    description: "Tender chicken cooked in a creamy tomato sauce with butter and aromatic spices. A North Indian classic.",
-    price: 349.99,
-    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D",
+    name: "Paneer",
+    description: "Classic Indian cottage cheese cooked in house style.",
+    price: 140,
+    image: "public/Assets/panner.png",
     categoryId: "indian",
     mealType: "dinner",
-    dietary: ["Signature Dish"]
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "11",
+    name: "Paneer Butter Masala",
+    description: "Creamy tomato-based gravy with soft paneer cubes.",
+    price: 130,
+    image: "public/Assets/panner_butter_masala.png",
+    categoryId: "indian",
+    mealType: "dinner",
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "12",
+    name: "Paneer Noodles",
+    description: "Spicy noodles with crispy paneer chunks.",
+    price: 137,
+    image: "public/Assets/Panner_Noodles.png",
+    categoryId: "chinese",
+    mealType: "lunch",
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "13",
+    name: "Paneer Pulao",
+    description: "Basmati rice with mildly spiced paneer cubes.",
+    price: 160,
+    image: "public/Assets/Panner_pulao.png",
+    categoryId: "indian",
+    mealType: "breakfast",
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "14",
+    name: "Schezwan Fried Rice",
+    description: "Hot and spicy schezwan-flavored fried rice.",
+    price: 130,
+    image: "public/Assets/Schezwan_Fried_rice.png",
+    categoryId: "chinese",
+    mealType: "lunch",
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "15",
+    name: "Schezwan Mushroom",
+    description: "Spicy mushrooms in schezwan sauce.",
+    price: 130,
+    image: "public/Assets/Schezwan_Mushroom.png",
+    categoryId: "chinese",
+    mealType: "dinner",
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "16",
+    name: "Schezwan Paneer Noodles",
+    description: "Hot schezwan-style noodles with paneer.",
+    price: 137,
+    image: "public/Assets/Schezwan_Panner_noodles.png",
+    categoryId: "chinese",
+    mealType: "lunch",
+    dietary: ["Vegetarian"]
+  },
+  {
+    id: "17",
+    name: "Mix Veg Gravy",
+    description: "Assorted vegetables cooked in rich Indian gravy.",
+    price: 117,
+    image: "public/Assets/Veg_mix.png",
+    categoryId: "chinese",
+    mealType: "dinner",
+    dietary: ["Vegetarian"]
   }
 ];
+
