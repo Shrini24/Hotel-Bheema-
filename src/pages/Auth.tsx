@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -26,7 +27,6 @@ const AuthPage: React.FC = () => {
     setError(null);
     setLoading(true);
 
-    // Supabase will auto-create user on signup
     if (!email || !password) {
       setError("Please enter email and password.");
       setLoading(false);
@@ -40,14 +40,21 @@ const AuthPage: React.FC = () => {
       } else {
         res = await supabase.auth.signUp({ email, password });
       }
+      
       if (res.error) {
         setError(res.error.message);
-      } else {
-        setError(null);
+        toast.error(res.error.message);
+      } else if (!isLogin && res.data?.user) {
+        toast.success("Account created! Please check your email for verification.");
+        setIsLogin(true); // Switch to login view after successful signup
+      } else if (isLogin && res.data?.user) {
+        toast.success("Successfully logged in!");
         navigate("/");
       }
     } catch (err: any) {
-      setError(err.message || "Something went wrong.");
+      const message = err.message || "Something went wrong.";
+      setError(message);
+      toast.error(message);
     } finally {
       setLoading(false);
     }

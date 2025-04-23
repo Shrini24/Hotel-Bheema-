@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import Orders from "./pages/Orders";
@@ -55,12 +55,16 @@ const App = () => (
 
 // RequireAuth wrapper to protect admin routes
 function RequireAuth({ children }: { children: React.ReactNode }) {
-  const { session } = useAuth();
-  const location = window.location;
-  if (!session) {
-    window.location.href = "/auth";
-    return null;
+  const { session, isLoading } = useAuth();
+  
+  if (isLoading) {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
   }
+  
+  if (!session) {
+    return <Navigate to="/auth" replace />;
+  }
+  
   return <>{children}</>;
 }
 

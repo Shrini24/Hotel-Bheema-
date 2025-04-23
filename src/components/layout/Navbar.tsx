@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -5,10 +6,11 @@ import { ShoppingCart, User, MapPin, LogOut } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 const Navbar: React.FC = () => {
-  const { toast } = useToast();
-  const { user, logout } = useAuth();
+  const { toast: uiToast } = useToast();
+  const { user, logout, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -16,12 +18,15 @@ const Navbar: React.FC = () => {
   };
 
   const handleLogoutClick = async () => {
-    await logout();
-    toast({
-      title: "Logged out",
-      description: "You have been logged out successfully.",
-    });
-    navigate("/");
+    try {
+      await logout();
+      toast("Logged out", {
+        description: "You have been logged out successfully.",
+      });
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   return (
@@ -70,7 +75,11 @@ const Navbar: React.FC = () => {
               </Badge>
             </Link>
             <div className="ml-3">
-              {!user ? (
+              {isLoading ? (
+                <Button variant="ghost" disabled className="flex items-center space-x-1">
+                  <span>Loading...</span>
+                </Button>
+              ) : !user ? (
                 <Button variant="ghost" onClick={handleLoginClick} className="flex items-center space-x-1 text-green-700 hover:bg-green-50">
                   <User className="h-5 w-5" />
                   <span>Login</span>
@@ -82,11 +91,13 @@ const Navbar: React.FC = () => {
                 </Button>
               )}
             </div>
-            <div className="ml-3">
-              <Button variant="outline" asChild className="border-green-300 text-green-700 hover:bg-green-50">
-                <Link to="/admin">Admin</Link>
-              </Button>
-            </div>
+            {user && (
+              <div className="ml-3">
+                <Button variant="outline" asChild className="border-green-300 text-green-700 hover:bg-green-50">
+                  <Link to="/admin">Admin</Link>
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
