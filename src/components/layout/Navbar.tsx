@@ -1,19 +1,27 @@
-
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, User, MapPin } from "lucide-react";
+import { ShoppingCart, User, MapPin, LogOut } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navbar: React.FC = () => {
   const { toast } = useToast();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
+    navigate("/auth");
+  };
+
+  const handleLogoutClick = async () => {
+    await logout();
     toast({
-      title: "Login feature",
-      description: "Login functionality will be implemented soon",
+      title: "Logged out",
+      description: "You have been logged out successfully.",
     });
+    navigate("/");
   };
 
   return (
@@ -62,10 +70,17 @@ const Navbar: React.FC = () => {
               </Badge>
             </Link>
             <div className="ml-3">
-              <Button variant="ghost" onClick={handleLoginClick} className="flex items-center space-x-1 text-green-700 hover:bg-green-50">
-                <User className="h-5 w-5" />
-                <span>Login</span>
-              </Button>
+              {!user ? (
+                <Button variant="ghost" onClick={handleLoginClick} className="flex items-center space-x-1 text-green-700 hover:bg-green-50">
+                  <User className="h-5 w-5" />
+                  <span>Login</span>
+                </Button>
+              ) : (
+                <Button variant="ghost" onClick={handleLogoutClick} className="flex items-center space-x-1 text-green-700 hover:bg-green-50">
+                  <LogOut className="h-5 w-5" />
+                  <span>Logout</span>
+                </Button>
+              )}
             </div>
             <div className="ml-3">
               <Button variant="outline" asChild className="border-green-300 text-green-700 hover:bg-green-50">

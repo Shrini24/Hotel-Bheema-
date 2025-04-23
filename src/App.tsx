@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,11 +9,8 @@ import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
 import Location from "./pages/Location";
 import NotFound from "./pages/NotFound";
-
-// Admin pages
-import Dashboard from "./pages/admin/Dashboard";
-import OrdersAdmin from "./pages/admin/Orders";
-import Kitchen from "./pages/admin/Kitchen";
+import AuthPage from "./pages/Auth";
+import { AuthProvider } from "@/hooks/useAuth";
 
 const queryClient = new QueryClient();
 
@@ -23,26 +19,44 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          {/* User Routes */}
-          <Route path="/" element={<Index />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/location" element={<Location />} />
-          
-          {/* Admin Routes */}
-          <Route path="/admin" element={<Dashboard />} />
-          <Route path="/admin/orders" element={<OrdersAdmin />} />
-          <Route path="/admin/kitchen" element={<Kitchen />} />
-          
-          {/* Catch all route for non-existing routes */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* User Routes */}
+            <Route path="/" element={<Index />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/location" element={<Location />} />
+
+            {/* Auth Route */}
+            <Route path="/auth" element={<AuthPage />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin" element={<RequireAuth><Dashboard /></RequireAuth>} />
+            <Route path="/admin/orders" element={<RequireAuth><OrdersAdmin /></RequireAuth>} />
+            <Route path="/admin/kitchen" element={<RequireAuth><Kitchen /></RequireAuth>} />
+            
+            {/* Catch all route for non-existing routes */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
+
+// RequireAuth wrapper to protect admin routes
+import { useAuth } from "@/hooks/useAuth";
+
+function RequireAuth({ children }: { children: React.ReactNode }) {
+  const { session } = useAuth();
+  const location = window.location;
+  if (!session) {
+    window.location.href = "/auth";
+    return null;
+  }
+  return <>{children}</>;
+}
 
 export default App;
